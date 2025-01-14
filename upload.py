@@ -31,7 +31,7 @@ def upload_in_drive(file_name, file_path):
 
 def upload_all_md5_files(folder_path):
     for file_name in os.listdir(folder_path):
-        if file_name.endswith('.xz'):
+        if file_name.endswith('.md5'):
             file_path = os.path.join(folder_path, file_name)
             upload_in_drive(file_name, file_path)
 
