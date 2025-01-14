@@ -130,7 +130,7 @@ echo "Installing pypi"
 sudo pip3 install oauth2client google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
 echo "Uploading all .xz files from $TMP_DIR to Google Drive"
-sudo python3 upload.py $TMP_DIR
+cd && sudo python3 upload.py $TMP_DIR
 
 echo "Deleting tmp dir"
 rm -rf "$TMP_DIR"
