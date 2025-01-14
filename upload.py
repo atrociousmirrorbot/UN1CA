@@ -35,4 +35,4 @@ def upload_target_files(folder_path):
             file_path = os.path.join(folder_path, file_name)
             upload_in_drive(file_name, file_path)
 
-upload_target_files("/home/runner/work/UN1CA/UN1CA/out")
+upload_target_files("/home/runner/work/UN1CA/UN1CA/tmp")
