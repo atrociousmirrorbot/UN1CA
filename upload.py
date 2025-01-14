@@ -29,10 +29,10 @@ def upload_in_drive(file_name, file_path):
     print(f'File uploaded. File ID is: https://drive.google.com/file/d/{uploaded_file.get("id")}')
 
 
-def upload_target_files(folder_path):
+def upload_all_md5_files(folder_path):
     for file_name in os.listdir(folder_path):
         if file_name.endswith('.xz'):
             file_path = os.path.join(folder_path, file_name)
             upload_in_drive(file_name, file_path)
 
-upload_target_files("/home/runner/work/UN1CA/UN1CA/out/tmp")
+upload_all_md5_files("/home/runner/work/UN1CA/UN1CA/out")
