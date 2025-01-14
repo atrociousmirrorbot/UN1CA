@@ -124,13 +124,13 @@ find $TMP_DIR -type f ! -name 'odm.img' ! -name 'product.img' ! -name 'system.im
 
 echo "Converting all images to xz format"
 sudo apt install -y p7zip-full
-cd $TMP_DIR && for i in *.img; do 7z a -mx9 "${i%.*}.img.xz" "$i" && rm "$i"; done
+for i in "$TMP_DIR"/*.img; do 7z a -mx9 "${i%.*}.img.xz" "$i" && rm "$i"; done
 
 echo "Installing pypi"
 sudo pip3 install oauth2client google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
 echo "Uploading all .xz files from $TMP_DIR to Google Drive"
-cd && sudo python3 upload.py
+cd && sudo python3 upload.py $TMP_DIR
 
 echo "Deleting tmp dir"
 rm -rf "$TMP_DIR"
