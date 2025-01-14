@@ -119,45 +119,17 @@ while read -r i; do
     mv "$WORK_DIR/$PARTITION.img" "$TMP_DIR/$PARTITION.img"
 done <<< "$(find "$WORK_DIR" -mindepth 1 -maxdepth 1 -type d)"
 
-echo "Building super.img"
-[ -f "$TMP_DIR/super.img" ] && rm -f "$TMP_DIR/super.img"
-CMD="lpmake $(GENERATE_LPMAKE_OPT)"
-$CMD &> /dev/null
-for i in "$TMP_DIR"/*; do
-    [[ "$i" == *"super.img" ]] && continue
-    rm -f "$i"
-done
+echo "Deleting unnecessary images"
+find $TMP_DIR -type f ! -name 'odm.img' ! -name 'product.img' ! -name 'system.img' -delete
 
-while read -r i; do
-    IMG="$(basename "$i")"
-    echo "Copying $IMG"
-    [ -f "$TMP_DIR/$IMG" ] && rm -f "$TMP_DIR/$IMG"
-    cp -a --preserve=all "$i" "$TMP_DIR/$IMG"
-done <<< "$(find "$WORK_DIR/kernel" -mindepth 1 -maxdepth 1 -type f -name "*.img")"
-
-for i in "$TMP_DIR"/*.img; do
-    echo "Compressing $(basename "$i")"
-    [ -f "$i.lz4" ] && rm -f "$i.lz4"
-    lz4 -B6 --content-size -q --rm "$i" "$i.lz4" &> /dev/null
-done
-
-echo "Creating tar"
-[ -f "$OUT_DIR/$FILE_NAME.tar" ] && rm -f "$OUT_DIR/$FILE_NAME.tar"
-cd "$TMP_DIR" ; tar -c --format=gnu -f "$OUT_DIR/$FILE_NAME.tar" -- *.lz4 ; cd - &> /dev/null
-
-echo "Generating checksum"
-[ -f "$OUT_DIR/$FILE_NAME.tar.md5" ] && rm -f "$OUT_DIR/$FILE_NAME.tar.md5"
-CHECKSUM="$(md5sum "$OUT_DIR/$FILE_NAME.tar" | cut -d " " -f 1 | sed 's/ //')"
-echo -n "$CHECKSUM" >> "$OUT_DIR/$FILE_NAME.tar" \
-    && echo "  $FILE_NAME.tar" >> "$OUT_DIR/$FILE_NAME.tar" \
-    && mv "$OUT_DIR/$FILE_NAME.tar" "$OUT_DIR/$FILE_NAME.tar.md5"
-
+echo "Converting all images to xz format"
+cd $TMP_DIR && for i in *.img; do 7z a -mx9 "${i%.*}.img.xz" "$i" && rm "$i"; done
 
 echo "Installing pypi"
 sudo sudo pip3 install oauth2client google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
-echo "Uploading tar.md5 files from $OUT_DIR to Google Drive"
-sudo python3 upload.py $OUT_DIR
+echo "Uploading all .xz files from $TMP_DIR to Google Drive"
+sudo python3 upload.py $TMP_DIR
 
 echo "Deleting tmp dir"
 rm -rf "$TMP_DIR"
