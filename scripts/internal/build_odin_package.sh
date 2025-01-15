@@ -119,7 +119,7 @@ while read -r i; do
     mv "$WORK_DIR/$PARTITION.img" "$TMP_DIR/$PARTITION.img"
 done <<< "$(find "$WORK_DIR" -mindepth 1 -maxdepth 1 -type d)"
 
-rm -f "$OUT_DIR/vendor.img"
+rm -f "$TMP_DIR/vendor.img"
 
 for i in "$TMP_DIR"/*.img; do
     if [[ -f "$i" ]]; then
