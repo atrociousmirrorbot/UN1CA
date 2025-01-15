@@ -121,6 +121,7 @@ done <<< "$(find "$WORK_DIR" -mindepth 1 -maxdepth 1 -type d)"
 
 rm -f "$TMP_DIR/vendor.img"
 
+echo "Compressing all .img files to xz format"
 for i in "$TMP_DIR"/*.img; do
     if [[ -f "$i" ]]; then
         echo "Compressing $(basename "$i")"
@@ -135,10 +136,10 @@ for i in "$TMP_DIR"/*.xz; do
     fi
 done
 
-echo "Installing pypi"
+echo "Installing python packages"
 sudo sudo pip3 install oauth2client google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
-echo "Uploading .xz files from $OUT_DIR to Google Drive"
+echo "Uploading all files from $OUT_DIR to Google Drive"
 sudo python3 upload.py $OUT_DIR
 
 echo "Deleting tmp dir"
