@@ -351,6 +351,7 @@ etc/init/vendor_flash_recovery.rc
 PRODUCT_DEBLOAT+="
 app/AssistantShell
 app/DuoStub
+app/GoogleCalendarSyncAdapter
 app/Maps
 app/SpeechServicesByGoogle
 app/YouTube
