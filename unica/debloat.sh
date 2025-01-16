@@ -396,7 +396,6 @@ system/app/Netflix_stub
 system/app/ParentalCare
 system/app/PhotoTable
 system/app/PlayAutoInstallConfig
-system/app/SamsungCalendar
 system/app/SamsungPassAutofill_v1
 system/app/SamsungTTSVoice_de_DE_f00
 system/app/SamsungTTSVoice_el_GR_f00
