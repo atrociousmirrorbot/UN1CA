@@ -315,9 +315,7 @@ priv-app/SetupWizard/oat
 "
 PRODUCT_DEBLOAT+="
 app/AssistantShell/oat
-app/Chrome/oat
 app/DuoStub/oat
-app/Gmail2/oat
 app/GoogleCalendarSyncAdapter/oat
 app/GoogleLocationHistory/oat
 app/Maps/oat
@@ -352,14 +350,19 @@ etc/init/vendor_flash_recovery.rc
 # Apps debloat
 PRODUCT_DEBLOAT+="
 app/AssistantShell
-app/Chrome
 app/DuoStub
-app/Gmail2
 app/Maps
+app/SpeechServicesByGoogle
 app/YouTube
 overlay/GmsConfigOverlaySearchSelector.apk
+priv-app/AndroidAutoStub
+priv-app/AndroidSystemIntelligence
+priv-app/GoogleRestore
+priv-app/HotwordEnrollmentOKGoogleEx4HEXAGON
+priv-app/HotwordEnrollmentXGoogleEx4HEXAGON
 priv-app/Messages
 priv-app/SearchSelector
+
 "
 SYSTEM_DEBLOAT+="
 system/app/AutomationTest_FB
@@ -371,7 +374,6 @@ system/app/FBAppManager_NS
 system/app/HMT
 system/app/MoccaMobile
 system/app/PlayAutoInstallConfig
-system/app/SamsungCalendar
 system/app/SamsungPassAutofill_v1
 system/app/SamsungTTSVoice_de_DE_f00
 system/app/SamsungTTSVoice_en_GB_f00
