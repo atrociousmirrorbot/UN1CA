@@ -497,7 +497,6 @@ system/priv-app/HPSClient
 system/priv-app/KnoxAIFrameworkApp
 system/priv-app/knoxanalyticsagent
 system/priv-app/knoxvpnproxyhandler
-system/priv-app/KnoxCore
 system/priv-app/KnoxMposAgent
 system/priv-app/KnoxPushManager
 system/priv-app/KnoxZtFramework
