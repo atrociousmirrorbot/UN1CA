@@ -418,7 +418,7 @@ system/etc/sysconfig/preinstalled-packages-com.samsung.android.dkey.xml
 system/etc/sysconfig/preinstalled-packages-com.samsung.android.spayfw.xml
 system/etc/sysconfig/samsungauthframework.xml
 system/etc/sysconfig/samsungpassapp.xml
-system/hidden
+system/hidden/SmartTutor
 system/lib64/librildump_jni.so
 system/preload
 system/priv-app/AuthFramework
