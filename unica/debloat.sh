@@ -351,9 +351,7 @@ etc/init/vendor_flash_recovery.rc
 PRODUCT_DEBLOAT+="
 app/AssistantShell
 app/DuoStub
-app/Maps
 app/SpeechServicesByGoogle
-app/YouTube
 overlay/GmsConfigOverlaySearchSelector.apk
 priv-app/AndroidAutoStub
 priv-app/AndroidSystemIntelligence
@@ -362,7 +360,6 @@ priv-app/HotwordEnrollmentOKGoogleEx4HEXAGON
 priv-app/HotwordEnrollmentXGoogleEx4HEXAGON
 priv-app/Messages
 priv-app/SearchSelector
-
 "
 SYSTEM_DEBLOAT+="
 system/app/AutomationTest_FB
@@ -421,7 +418,7 @@ system/etc/sysconfig/preinstalled-packages-com.samsung.android.dkey.xml
 system/etc/sysconfig/preinstalled-packages-com.samsung.android.spayfw.xml
 system/etc/sysconfig/samsungauthframework.xml
 system/etc/sysconfig/samsungpassapp.xml
-system/hidden/SmartTutor
+system/hidden
 system/lib64/librildump_jni.so
 system/preload
 system/priv-app/AuthFramework
